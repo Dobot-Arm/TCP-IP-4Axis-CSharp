@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>CSharpTcpDemo</RootNamespace>
     <AssemblyName>CSharpTcpDemo</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -52,15 +52,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="com.dobot.api\DobotClient.cs" />
-    <Compile Include="com.dobot.api\ErrorInfoBean.cs" />
-    <Compile Include="com.dobot.api\Dashboard.cs" />
-    <Compile Include="com.dobot.api\DescartesPoint.cs" />
-    <Compile Include="com.dobot.api\DobotMove.cs" />
-    <Compile Include="com.dobot.api\ErrorInfoHelper.cs" />
-    <Compile Include="com.dobot.api\Feedback.cs" />
-    <Compile Include="com.dobot.api\FeedbackData.cs" />
-    <Compile Include="com.dobot.api\JointPoint.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -95,5 +86,12 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Dobot.API\Dobot.API.csproj">
+      <Project>{70bc2e11-cc4e-4931-8d55-4cd1a64edc67}</Project>
+      <Name>Dobot.API</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

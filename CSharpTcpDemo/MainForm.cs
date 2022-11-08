@@ -1,5 +1,6 @@
-﻿using CSharpTcpDemo.com.dobot.api;
-using CSharthiscpDemo.com.dobot.api;
+﻿//using CSharpTcpDemo.com.dobot.api;
+//using CSharthiscpDemo.com.dobot.api;
+using Dobot.API;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Net;
@@ -60,12 +61,30 @@ namespace CSharpTcpDemo
             mTimerReader.Elapsed += new System.Timers.ElapsedEventHandler(TimeoutEvent);
             mTimerReader.AutoReset = true;
 
+            mFeedback.OnNewFeedbackData += MFeedback_OnNewFeedbackData;
+
             //默认禁止窗口中的大部分控件
             DisableWindow();
 
             string strPath = System.Windows.Forms.Application.StartupPath + "\\";
-            ErrorInfoHelper.ParseControllerJsonFile(strPath+ "alarm_controller.json");
+            ErrorInfoHelper.ParseControllerJsonFile(strPath + "alarm_controller.json");
             ErrorInfoHelper.ParseServoJsonFile(strPath + "alarm_servo.json");
+        }
+
+        private void MFeedback_OnNewFeedbackData(object sender, FeedbackEventArgs feedback)
+        {
+            ((Feedback)sender).DataHasRead = false;
+            if (this.labDI.InvokeRequired)
+            {
+                this.labDI.Invoke(new Action(() =>
+                {
+                    ShowDataResult(feedback.Feedback);
+                }));
+            }
+            else
+            {
+                ShowDataResult(feedback.Feedback);
+            }
         }
 
         private void BindBtn_MoveEvent(Button btn, string strTag)
@@ -113,7 +132,8 @@ namespace CSharpTcpDemo
             }
             if (this.richTextBoxLog.InvokeRequired)
             {
-                this.richTextBoxLog.Invoke(new Action<string>(log => {
+                this.richTextBoxLog.Invoke(new Action<string>(log =>
+                {
                     InsertLogToRichBox(this.richTextBoxLog, log);
                 }), str);
             }
@@ -130,7 +150,8 @@ namespace CSharpTcpDemo
             }
             if (this.richTextBoxErrInfo.InvokeRequired)
             {
-                this.richTextBoxErrInfo.Invoke(new Action<string>(log => {
+                this.richTextBoxErrInfo.Invoke(new Action<string>(log =>
+                {
                     InsertLogToRichBox(this.richTextBoxErrInfo, log);
                 }), str);
             }
@@ -186,8 +207,9 @@ namespace CSharpTcpDemo
 
         private void DoMoveJog(string str)
         {
-            PrintLog(string.Format("send to {0}:{1}: MoveJog({2})", mDobotMove.IP,mDobotMove.Port,str));
-            Thread thd = new Thread(() => {
+            PrintLog(string.Format("send to {0}:{1}: MoveJog({2})", mDobotMove.IP, mDobotMove.Port, str));
+            Thread thd = new Thread(() =>
+            {
                 string ret = mDobotMove.MoveJog(str);
                 PrintLog(string.Format("Receive From {0}:{1}: {2}", mDobotMove.IP, mDobotMove.Port, ret));
             });
@@ -197,7 +219,8 @@ namespace CSharpTcpDemo
         private void DoStopMoveJog()
         {
             PrintLog(string.Format("send to {0}:{1}: MoveJog()", mDobotMove.IP, mDobotMove.Port));
-            Thread thd = new Thread(() => {
+            Thread thd = new Thread(() =>
+            {
                 string ret = mDobotMove.StopMoveJog();
                 PrintLog(string.Format("Receive From {0}:{1}: {2}", mDobotMove.IP, mDobotMove.Port, ret));
             });
@@ -205,21 +228,21 @@ namespace CSharpTcpDemo
         }
         private void TimeoutEvent(object sender, System.Timers.ElapsedEventArgs e)
         {
-            if (!mFeedback.DataHasRead)
-            {
-                return;
-            }
-            mFeedback.DataHasRead = false;
-            if (this.labDI.InvokeRequired)
-            {
-                this.labDI.Invoke(new Action(() => {
-                    ShowDataResult();
-                }));
-            }
-            else
-            {
-                ShowDataResult();
-            }
+            //if (!mFeedback.DataHasRead)
+            //{
+            //    return;
+            //}
+            //mFeedback.DataHasRead = false;
+            //if (this.labDI.InvokeRequired)
+            //{
+            //    this.labDI.Invoke(new Action(() => {
+            //        ShowDataResult();
+            //    }));
+            //}
+            //else
+            //{
+            //    ShowDataResult();
+            //}
         }
 
         private bool IsValidIP(string strIp)
@@ -269,7 +292,8 @@ namespace CSharpTcpDemo
             int iPortDashboard = Parse2Int(this.textBoxDashboardPort.Text);
 
             PrintLog("Connecting...");
-            Thread thd = new Thread(() => {
+            Thread thd = new Thread(() =>
+            {
                 if (!mDashboard.Connect(strIp, iPortDashboard))
                 {
                     PrintLog(string.Format("Connect {0}:{1} Fail!!", strIp, iPortDashboard));
@@ -290,10 +314,11 @@ namespace CSharpTcpDemo
 
                 PrintLog("Connect Success!!!");
 
-                this.Invoke(new Action(() => {
-                    EnableWindow();
-                    this.btnConnect.Text = "Disconnect";
-                }));
+                this.Invoke(new Action(() =>
+          {
+              EnableWindow();
+              this.btnConnect.Text = "Disconnect";
+          }));
             });
             thd.Start();
         }
@@ -301,7 +326,8 @@ namespace CSharpTcpDemo
         private void Disconnect()
         {
             PrintLog("Disconnecting...");
-            Thread thd = new Thread(() => {
+            Thread thd = new Thread(() =>
+            {
                 mFeedback.Disconnect();
                 mDobotMove.Disconnect();
                 mDashboard.Disconnect();
@@ -309,10 +335,11 @@ namespace CSharpTcpDemo
 
                 mTimerReader.Stop();
 
-                this.Invoke(new Action(() => {
-                    DisableWindow();
-                    this.btnConnect.Text = "Connect";
-                }));
+                this.Invoke(new Action(() =>
+          {
+              DisableWindow();
+              this.btnConnect.Text = "Connect";
+          }));
             });
             thd.Start();
         }
@@ -321,17 +348,19 @@ namespace CSharpTcpDemo
         {
             bool bEnable = this.btnEnable.Text.Equals("Enable");
 
-            PrintLog(string.Format("send to {0}:{1}: {2}()", mDashboard.IP, mDashboard.Port, bEnable? "EnableRobot" : "DisableRobot"));
-            Thread thd = new Thread(() => {
+            PrintLog(string.Format("send to {0}:{1}: {2}()", mDashboard.IP, mDashboard.Port, bEnable ? "EnableRobot" : "DisableRobot"));
+            Thread thd = new Thread(() =>
+            {
                 string ret = bEnable ? mDashboard.EnableRobot() : mDashboard.DisableRobot();
                 bool bOk = ret.StartsWith("0");
 
-                this.btnEnable.Invoke(new Action(() => {
-                    if (bOk)
-                    {
-                        this.btnEnable.Text = bEnable ? "Disable" : "Enable";
-                    }
-                }));
+                this.btnEnable.Invoke(new Action(() =>
+          {
+              if (bOk)
+              {
+                  this.btnEnable.Text = bEnable ? "Disable" : "Enable";
+              }
+          }));
 
                 PrintLog(string.Format("Receive From {0}:{1}: {2}", mDashboard.IP, mDashboard.Port, ret));
             });
@@ -341,7 +370,8 @@ namespace CSharpTcpDemo
         private void btnResetRobot_Click(object sender, EventArgs e)
         {
             PrintLog(string.Format("send to {0}:{1}: ResetRobot()", mDashboard.IP, mDashboard.Port));
-            Thread thd = new Thread(() => {
+            Thread thd = new Thread(() =>
+            {
                 string ret = mDashboard.ResetRobot();
                 PrintLog(string.Format("Receive From {0}:{1}: {2}", mDashboard.IP, mDashboard.Port, ret));
             });
@@ -351,7 +381,8 @@ namespace CSharpTcpDemo
         private void btnClearError_Click(object sender, EventArgs e)
         {
             PrintLog(string.Format("send to {0}:{1}: ClearError()", mDashboard.IP, mDashboard.Port));
-            Thread thd = new Thread(() => {
+            Thread thd = new Thread(() =>
+            {
                 string ret = mDashboard.ClearError();
                 PrintLog(string.Format("Receive From {0}:{1}: {2}", mDashboard.IP, mDashboard.Port, ret));
             });
@@ -362,7 +393,8 @@ namespace CSharpTcpDemo
         {
             int iValue = Parse2Int(this.textBoxSpeedRatio.Text);
             PrintLog(string.Format("send to {0}:{1}: SpeedFactor({1})", mDashboard.IP, mDashboard.Port, iValue));
-            Thread thd = new Thread(() => {
+            Thread thd = new Thread(() =>
+            {
                 string ret = mDashboard.SpeedFactor(iValue);
                 PrintLog(string.Format("Receive From {0}:{1}: {2}", mDashboard.IP, mDashboard.Port, ret));
             });
@@ -387,8 +419,9 @@ namespace CSharpTcpDemo
             pt.z = Parse2Double(this.textBoxZ.Text);
             pt.rx = Parse2Double(this.textBoxRx.Text);
 
-            PrintLog(string.Format("send to {0}:{1}: MovJ({2})", mDobotMove.IP, mDobotMove.Port,pt.ToString()));
-            Thread thd = new Thread(() => {
+            PrintLog(string.Format("send to {0}:{1}: MovJ({2})", mDobotMove.IP, mDobotMove.Port, pt.ToString()));
+            Thread thd = new Thread(() =>
+            {
                 string ret = mDobotMove.MovJ(pt);
                 PrintLog(string.Format("Receive From {0}:{1}: {2}", mDobotMove.IP, mDobotMove.Port, ret));
             });
@@ -404,7 +437,8 @@ namespace CSharpTcpDemo
             pt.rx = Parse2Double(this.textBoxRx.Text);
 
             PrintLog(string.Format("send to {0}:{1}: MovL({2})", mDobotMove.IP, mDobotMove.Port, pt.ToString()));
-            Thread thd = new Thread(() => {
+            Thread thd = new Thread(() =>
+            {
                 string ret = mDobotMove.MovL(pt);
                 PrintLog(string.Format("Receive From {0}:{1}: {2}", mDobotMove.IP, mDobotMove.Port, ret));
             });
@@ -420,7 +454,8 @@ namespace CSharpTcpDemo
             pt.j4 = Parse2Double(this.textBoxJ4.Text);
 
             PrintLog(string.Format("send to {0}:{1}: JointMovJ({2})", mDobotMove.IP, mDobotMove.Port, pt.ToString()));
-            Thread thd = new Thread(() => {
+            Thread thd = new Thread(() =>
+            {
                 string ret = mDobotMove.JointMovJ(pt);
                 PrintLog(string.Format("Receive From {0}:{1}: {2}", mDobotMove.IP, mDobotMove.Port, ret));
             });
@@ -434,7 +469,8 @@ namespace CSharpTcpDemo
 
             PrintLog(string.Format("send to {0}:{1}: DigitalOutputs({2},{3})", mDashboard.IP, mDashboard.Port,
                 idx, bIsOn));
-            Thread thd = new Thread(() => {
+            Thread thd = new Thread(() =>
+            {
                 string ret = mDashboard.DigitalOutputs(idx, bIsOn);
                 PrintLog(string.Format("Receive From {0}:{1}: {2}", mDashboard.IP, mDashboard.Port, ret));
             });
@@ -445,7 +481,32 @@ namespace CSharpTcpDemo
         {
             this.richTextBoxErrInfo.Clear();
         }
+        private void ShowDataResult(FeedbackData fd)
+        {
+            this.labCurrentSpeedRatio.Text = string.Format("Current Speed Ratio:{0:F2}%", fd.SpeedScaling);
+            this.labRobotMode.Text = string.Format("Robot Mode:{0}", fd.GetRobotModeString());
 
+            if (null != fd.QActual && fd.QActual.Length >= 4)
+            {
+                this.labJ1.Text = string.Format("J1:{0:F3}", fd.QActual[0]);
+                this.labJ2.Text = string.Format("J2:{0:F3}", fd.QActual[1]);
+                this.labJ3.Text = string.Format("J3:{0:F3}", fd.QActual[2]);
+                this.labJ4.Text = string.Format("J4:{0:F3}", fd.QActual[3]);
+            }
+
+            if (null != fd.ToolVectorActual && fd.ToolVectorActual.Length >= 4)
+            {
+                this.labX.Text = string.Format("X:{0:F3}", fd.ToolVectorActual[0]);
+                this.labY.Text = string.Format("Y:{0:F3}", fd.ToolVectorActual[1]);
+                this.labZ.Text = string.Format("Z:{0:F3}", fd.ToolVectorActual[2]);
+                this.labRx.Text = string.Format("Rx:{0:F3}", fd.ToolVectorActual[3]);
+            }
+
+            this.labDI.Text = "Digital Inputs:" + Convert.ToString(fd.DigitalInputs, 2).PadLeft(64, '0');
+            this.labDO.Text = "Digital Outputs:" + Convert.ToString(fd.DigitalOutputs, 2).PadLeft(64, '0');
+
+            ParseWarn();
+        }
         private void ShowDataResult()
         {
             this.labCurrentSpeedRatio.Text = string.Format("Current Speed Ratio:{0:F2}%", mFeedback.feedbackData.SpeedScaling);

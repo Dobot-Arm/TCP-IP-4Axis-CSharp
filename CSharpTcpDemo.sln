@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.1778
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpTcpDemo", "CSharpTcpDemo\CSharpTcpDemo.csproj", "{277D5B18-780C-4151-AADA-2C108F5DAB81}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpTcpDemo", "CSharpTcpDemo\CSharpTcpDemo.csproj", "{D3713F13-B7C4-4840-926E-D7D0672DEC2E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dobot.API", "Dobot.API\Dobot.API.csproj", "{70BC2E11-CC4E-4931-8D55-4CD1A64EDC67}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{277D5B18-780C-4151-AADA-2C108F5DAB81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{277D5B18-780C-4151-AADA-2C108F5DAB81}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{277D5B18-780C-4151-AADA-2C108F5DAB81}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{277D5B18-780C-4151-AADA-2C108F5DAB81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3713F13-B7C4-4840-926E-D7D0672DEC2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3713F13-B7C4-4840-926E-D7D0672DEC2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3713F13-B7C4-4840-926E-D7D0672DEC2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3713F13-B7C4-4840-926E-D7D0672DEC2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70BC2E11-CC4E-4931-8D55-4CD1A64EDC67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70BC2E11-CC4E-4931-8D55-4CD1A64EDC67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70BC2E11-CC4E-4931-8D55-4CD1A64EDC67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70BC2E11-CC4E-4931-8D55-4CD1A64EDC67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
