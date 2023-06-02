@@ -8,13 +8,29 @@ namespace CSharpTcpDemo.com.dobot.api
 {
     class FeedbackData
     {
+        #region 机器人模式
+        public const int NO_CONTROLLER = -1;
+        public const int NO_CONNECTED = 0;
+        public const int ROBOT_MODE_INIT = 1;
+        public const int ROBOT_MODE_BRAKE_OPEN = 2;
+        public const int ROBOT_RESERVED = 3;
+        public const int ROBOT_MODE_DISABLED = 4;
+        public const int ROBOT_MODE_ENABLE = 5;
+        public const int ROBOT_MODE_BACKDRIVE = 6;
+        public const int ROBOT_MODE_RUNNING = 7;
+        public const int ROBOT_MODE_RECORDING = 8;
+        public const int ROBOT_MODE_ERROR = 9;
+        public const int ROBOT_MODE_PAUSE = 10;
+        public const int ROBOT_MODE_JOG = 11;
+        #endregion
+
         public short MessageSize = 0;//消息字节总长度
 
         public short[] Reserved1 = new short[3];//保留位
 
         public long DigitalInputs = 0;//数字输入
         public long DigitalOutputs = 0;//数字输出
-        public long RobotMode = 0;//机器人模式
+        public long RobotMode = -1;//机器人模式
         public long TimeStamp = 0;//时间戳（单位ms）
 
         public long Reserved2 = 0;//保留位

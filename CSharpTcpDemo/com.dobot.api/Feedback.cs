@@ -25,7 +25,7 @@ namespace CSharpTcpDemo.com.dobot.api
         protected override void OnConnected(Socket sock)
         {
             sock.SendTimeout = 5000;
-            sock.ReceiveTimeout = 15000;
+            //sock.ReceiveTimeout = 15000;
 
             mThread = new Thread(OnRecvData);
             mThread.IsBackground = true;
@@ -438,34 +438,39 @@ namespace CSharpTcpDemo.com.dobot.api
         {
             switch (feedbackData.RobotMode)
             {
-                case -1:
+                case FeedbackData.NO_CONTROLLER:
                     return "NO_CONTROLLER";
-                case 0:
+                case FeedbackData.NO_CONNECTED:
                     return "NO_CONNECTED";
-                case 1:
+                case FeedbackData.ROBOT_MODE_INIT:
                     return "ROBOT_MODE_INIT";
-                case 2:
+                case FeedbackData.ROBOT_MODE_BRAKE_OPEN:
                     return "ROBOT_MODE_BRAKE_OPEN";
-                case 3:
+                case FeedbackData.ROBOT_RESERVED:
                     return "ROBOT_RESERVED";
-                case 4:
+                case FeedbackData.ROBOT_MODE_DISABLED:
                     return "ROBOT_MODE_DISABLED";
-                case 5:
+                case FeedbackData.ROBOT_MODE_ENABLE:
                     return "ROBOT_MODE_ENABLE";
-                case 6:
+                case FeedbackData.ROBOT_MODE_BACKDRIVE:
                     return "ROBOT_MODE_BACKDRIVE";
-                case 7:
+                case FeedbackData.ROBOT_MODE_RUNNING:
                     return "ROBOT_MODE_RUNNING";
-                case 8:
+                case FeedbackData.ROBOT_MODE_RECORDING:
                     return "ROBOT_MODE_RECORDING";
-                case 9:
+                case FeedbackData.ROBOT_MODE_ERROR:
                     return "ROBOT_MODE_ERROR";
-                case 10:
+                case FeedbackData.ROBOT_MODE_PAUSE:
                     return "ROBOT_MODE_PAUSE";
-                case 11:
+                case FeedbackData.ROBOT_MODE_JOG:
                     return "ROBOT_MODE_JOG";
             }
             return string.Format("UNKNOW：RobotMode={0}", feedbackData.RobotMode);
+        }
+
+        public bool IsEnabled()
+        {
+            return FeedbackData.ROBOT_MODE_ENABLE == feedbackData.RobotMode;
         }
     }
 }
