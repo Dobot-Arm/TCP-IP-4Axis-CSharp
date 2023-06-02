@@ -152,7 +152,7 @@ namespace CSharpTcpDemo.com.dobot.api
             {
                 return "send error:invalid parameter!!!";
             }
-            string str = String.Format("RelMovJUser({0},{1},{2},{3},{4},{5},{6})", pt.x, pt.y, pt.z, pt.rx, pt.ry, pt.rz, pt.user);
+            string str = String.Format("RelMovJUser({0},{1},{2},{3},0,0,{4})", pt.x, pt.y, pt.z, pt.r , pt.user);
             if (!SendData(str))
             {
                 return str + ":send error";
@@ -176,7 +176,7 @@ namespace CSharpTcpDemo.com.dobot.api
             {
                 return "send error:invalid parameter!!!";
             }
-            string str = String.Format("RelMovLUser({0},{1},{2},{3},{4},{5},{6})", pt.x, pt.y, pt.z, pt.rx, pt.ry, pt.rz, pt.user);
+            string str = String.Format("RelMovLUser({0},{1},{2},{3},0,0,{4})", pt.x, pt.y, pt.z, pt.r, pt.user);
             if (!SendData(str))
             {
                 return str + ":send error";
@@ -200,7 +200,7 @@ namespace CSharpTcpDemo.com.dobot.api
             {
                 return "send error:invalid parameter!!!";
             }
-            string str = String.Format("RelJointMovJ({0},{1},{2},{3},{4},{5})", pt.x, pt.y, pt.z, pt.rx, pt.ry, pt.rz);
+            string str = String.Format("RelJointMovJ({0},{1},{2},{3},0,0)", pt.x, pt.y, pt.z, pt.r);
             if (!SendData(str))
             {
                 return str + ":send error";

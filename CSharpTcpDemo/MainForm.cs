@@ -511,7 +511,7 @@ namespace CSharpTcpDemo
             pt.x = Parse2Double(this.textBoxOffsetX.Text);
             pt.y = Parse2Double(this.textBoxOffsetY.Text);
             pt.z = Parse2Double(this.textBoxOffsetZ.Text);
-            pt.rx = Parse2Double(this.textBoxOffsetRx.Text);
+            pt.r = Parse2Double(this.textBoxOffsetRx.Text);
             pt.user = 0;
 
             PrintLog(string.Format("send to {0}:{1}: RelMovJUser({2})", mDobotMove.IP, mDobotMove.Port, pt.ToString()));
@@ -528,7 +528,7 @@ namespace CSharpTcpDemo
             pt.x = Parse2Double(this.textBoxOffsetX.Text);
             pt.y = Parse2Double(this.textBoxOffsetY.Text);
             pt.z = Parse2Double(this.textBoxOffsetZ.Text);
-            pt.rx = Parse2Double(this.textBoxOffsetRx.Text);
+            pt.r = Parse2Double(this.textBoxOffsetRx.Text);
             pt.user = 0;
 
             PrintLog(string.Format("send to {0}:{1}: RelMovLUser({2})", mDobotMove.IP, mDobotMove.Port, pt.ToString()));
@@ -545,7 +545,7 @@ namespace CSharpTcpDemo
             pt.x = Parse2Double(this.textBoxOffset1.Text);
             pt.y = Parse2Double(this.textBoxOffset2.Text);
             pt.z = Parse2Double(this.textBoxOffset3.Text);
-            pt.rx = Parse2Double(this.textBoxOffset4.Text);
+            pt.r = Parse2Double(this.textBoxOffset4.Text);
 
             PrintLog(string.Format("send to {0}:{1}: RelJointMovJ({2})", mDobotMove.IP, mDobotMove.Port, pt.ToString()));
             Thread thd = new Thread(() => {

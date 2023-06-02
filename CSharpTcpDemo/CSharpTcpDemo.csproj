@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{D3713F13-B7C4-4840-926E-D7D0672DEC2E}</ProjectGuid>
+    <ProjectGuid>{277D5B18-780C-4151-AADA-2C108F5DAB81}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>CSharpTcpDemo</RootNamespace>
     <AssemblyName>CSharpTcpDemo</AssemblyName>
