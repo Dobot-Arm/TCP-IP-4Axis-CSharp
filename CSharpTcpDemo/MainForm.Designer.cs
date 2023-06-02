@@ -106,11 +106,33 @@
             this.labCurrentSpeedRatio = new System.Windows.Forms.Label();
             this.richTextBoxLog = new System.Windows.Forms.RichTextBox();
             this.groupBoxLog = new System.Windows.Forms.GroupBox();
+            this.btnEnableAgain = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnRelJointMovJ = new System.Windows.Forms.Button();
+            this.btnRelMovLUser = new System.Windows.Forms.Button();
+            this.btnRelMovJUser = new System.Windows.Forms.Button();
+            this.textBoxOffset4 = new System.Windows.Forms.TextBox();
+            this.textBoxOffsetRx = new System.Windows.Forms.TextBox();
+            this.textBoxOffset3 = new System.Windows.Forms.TextBox();
+            this.textBoxOffsetZ = new System.Windows.Forms.TextBox();
+            this.textBoxOffset2 = new System.Windows.Forms.TextBox();
+            this.textBoxOffsetY = new System.Windows.Forms.TextBox();
+            this.textBoxOffset1 = new System.Windows.Forms.TextBox();
+            this.textBoxOffsetX = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
             this.groupBoxConnect.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBoxLog.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -218,6 +240,7 @@
             this.groupBox2.Controls.Add(this.btnSpeedConfirm);
             this.groupBox2.Controls.Add(this.btnClearError);
             this.groupBox2.Controls.Add(this.btnResetRobot);
+            this.groupBox2.Controls.Add(this.btnEnableAgain);
             this.groupBox2.Controls.Add(this.btnEnable);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.label19);
@@ -583,7 +606,7 @@
             this.groupBox3.Controls.Add(this.labJ1);
             this.groupBox3.Controls.Add(this.labX);
             this.groupBox3.Controls.Add(this.labCurrentSpeedRatio);
-            this.groupBox3.Location = new System.Drawing.Point(13, 341);
+            this.groupBox3.Location = new System.Drawing.Point(13, 446);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(665, 311);
             this.groupBox3.TabIndex = 9;
@@ -880,20 +903,233 @@
             // groupBoxLog
             // 
             this.groupBoxLog.Controls.Add(this.richTextBoxLog);
-            this.groupBoxLog.Location = new System.Drawing.Point(684, 341);
+            this.groupBoxLog.Location = new System.Drawing.Point(684, 446);
             this.groupBoxLog.Name = "groupBoxLog";
             this.groupBoxLog.Size = new System.Drawing.Size(243, 311);
             this.groupBoxLog.TabIndex = 10;
             this.groupBoxLog.TabStop = false;
             this.groupBoxLog.Text = "Log";
             // 
+            // btnEnableAgain
+            // 
+            this.btnEnableAgain.Location = new System.Drawing.Point(750, 28);
+            this.btnEnableAgain.Name = "btnEnableAgain";
+            this.btnEnableAgain.Size = new System.Drawing.Size(105, 23);
+            this.btnEnableAgain.TabIndex = 0;
+            this.btnEnableAgain.Text = "Enable-Again";
+            this.btnEnableAgain.UseVisualStyleBackColor = true;
+            this.btnEnableAgain.Click += new System.EventHandler(this.btnEnableAgain_Click);
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnRelJointMovJ);
+            this.groupBox1.Controls.Add(this.btnRelMovLUser);
+            this.groupBox1.Controls.Add(this.btnRelMovJUser);
+            this.groupBox1.Controls.Add(this.textBoxOffset4);
+            this.groupBox1.Controls.Add(this.textBoxOffsetRx);
+            this.groupBox1.Controls.Add(this.textBoxOffset3);
+            this.groupBox1.Controls.Add(this.textBoxOffsetZ);
+            this.groupBox1.Controls.Add(this.textBoxOffset2);
+            this.groupBox1.Controls.Add(this.textBoxOffsetY);
+            this.groupBox1.Controls.Add(this.textBoxOffset1);
+            this.groupBox1.Controls.Add(this.textBoxOffsetX);
+            this.groupBox1.Controls.Add(this.label11);
+            this.groupBox1.Controls.Add(this.label12);
+            this.groupBox1.Controls.Add(this.label17);
+            this.groupBox1.Controls.Add(this.label18);
+            this.groupBox1.Controls.Add(this.label22);
+            this.groupBox1.Controls.Add(this.label23);
+            this.groupBox1.Controls.Add(this.label24);
+            this.groupBox1.Controls.Add(this.label25);
+            this.groupBox1.Location = new System.Drawing.Point(13, 342);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(900, 91);
+            this.groupBox1.TabIndex = 8;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Relative Move Function";
+            // 
+            // btnRelJointMovJ
+            // 
+            this.btnRelJointMovJ.Location = new System.Drawing.Point(561, 60);
+            this.btnRelJointMovJ.Name = "btnRelJointMovJ";
+            this.btnRelJointMovJ.Size = new System.Drawing.Size(105, 23);
+            this.btnRelJointMovJ.TabIndex = 2;
+            this.btnRelJointMovJ.Text = "RelJointMovJ";
+            this.btnRelJointMovJ.UseVisualStyleBackColor = true;
+            this.btnRelJointMovJ.Click += new System.EventHandler(this.btnRelJointMovJ_Click);
+            // 
+            // btnRelMovLUser
+            // 
+            this.btnRelMovLUser.Location = new System.Drawing.Point(673, 25);
+            this.btnRelMovLUser.Name = "btnRelMovLUser";
+            this.btnRelMovLUser.Size = new System.Drawing.Size(105, 23);
+            this.btnRelMovLUser.TabIndex = 2;
+            this.btnRelMovLUser.Text = "RelMovLUser";
+            this.btnRelMovLUser.UseVisualStyleBackColor = true;
+            this.btnRelMovLUser.Click += new System.EventHandler(this.btnRelMovLUser_Click);
+            // 
+            // btnRelMovJUser
+            // 
+            this.btnRelMovJUser.Location = new System.Drawing.Point(561, 25);
+            this.btnRelMovJUser.Name = "btnRelMovJUser";
+            this.btnRelMovJUser.Size = new System.Drawing.Size(105, 23);
+            this.btnRelMovJUser.TabIndex = 2;
+            this.btnRelMovJUser.Text = "RelMovJUser";
+            this.btnRelMovJUser.UseVisualStyleBackColor = true;
+            this.btnRelMovJUser.Click += new System.EventHandler(this.btnRelMovJUser_Click);
+            // 
+            // textBoxOffset4
+            // 
+            this.textBoxOffset4.Location = new System.Drawing.Point(479, 62);
+            this.textBoxOffset4.Name = "textBoxOffset4";
+            this.textBoxOffset4.Size = new System.Drawing.Size(72, 21);
+            this.textBoxOffset4.TabIndex = 1;
+            this.textBoxOffset4.Text = "0";
+            // 
+            // textBoxOffsetRx
+            // 
+            this.textBoxOffsetRx.Location = new System.Drawing.Point(479, 25);
+            this.textBoxOffsetRx.Name = "textBoxOffsetRx";
+            this.textBoxOffsetRx.Size = new System.Drawing.Size(72, 21);
+            this.textBoxOffsetRx.TabIndex = 1;
+            this.textBoxOffsetRx.Text = "0";
+            // 
+            // textBoxOffset3
+            // 
+            this.textBoxOffset3.Location = new System.Drawing.Point(345, 62);
+            this.textBoxOffset3.Name = "textBoxOffset3";
+            this.textBoxOffset3.Size = new System.Drawing.Size(72, 21);
+            this.textBoxOffset3.TabIndex = 1;
+            this.textBoxOffset3.Text = "0";
+            // 
+            // textBoxOffsetZ
+            // 
+            this.textBoxOffsetZ.Location = new System.Drawing.Point(345, 25);
+            this.textBoxOffsetZ.Name = "textBoxOffsetZ";
+            this.textBoxOffsetZ.Size = new System.Drawing.Size(72, 21);
+            this.textBoxOffsetZ.TabIndex = 1;
+            this.textBoxOffsetZ.Text = "0";
+            // 
+            // textBoxOffset2
+            // 
+            this.textBoxOffset2.Location = new System.Drawing.Point(204, 62);
+            this.textBoxOffset2.Name = "textBoxOffset2";
+            this.textBoxOffset2.Size = new System.Drawing.Size(72, 21);
+            this.textBoxOffset2.TabIndex = 1;
+            this.textBoxOffset2.Text = "0";
+            // 
+            // textBoxOffsetY
+            // 
+            this.textBoxOffsetY.Location = new System.Drawing.Point(204, 25);
+            this.textBoxOffsetY.Name = "textBoxOffsetY";
+            this.textBoxOffsetY.Size = new System.Drawing.Size(72, 21);
+            this.textBoxOffsetY.TabIndex = 1;
+            this.textBoxOffsetY.Text = "0";
+            // 
+            // textBoxOffset1
+            // 
+            this.textBoxOffset1.Location = new System.Drawing.Point(67, 62);
+            this.textBoxOffset1.Name = "textBoxOffset1";
+            this.textBoxOffset1.Size = new System.Drawing.Size(72, 21);
+            this.textBoxOffset1.TabIndex = 1;
+            this.textBoxOffset1.Text = "0";
+            // 
+            // textBoxOffsetX
+            // 
+            this.textBoxOffsetX.Location = new System.Drawing.Point(68, 25);
+            this.textBoxOffsetX.Name = "textBoxOffsetX";
+            this.textBoxOffsetX.Size = new System.Drawing.Size(72, 21);
+            this.textBoxOffsetX.TabIndex = 1;
+            this.textBoxOffsetX.Text = "0";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(423, 66);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(53, 12);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "Offset4:";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(423, 29);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(53, 12);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "OffsetR:";
+            this.label12.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(288, 66);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(53, 12);
+            this.label17.TabIndex = 0;
+            this.label17.Text = "Offset3:";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(288, 29);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(53, 12);
+            this.label18.TabIndex = 0;
+            this.label18.Text = "OffsetZ:";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(148, 66);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(53, 12);
+            this.label22.TabIndex = 0;
+            this.label22.Text = "Offset2:";
+            this.label22.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(12, 66);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(53, 12);
+            this.label23.TabIndex = 0;
+            this.label23.Text = "Offset1:";
+            this.label23.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(148, 29);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(53, 12);
+            this.label24.TabIndex = 0;
+            this.label24.Text = "OffsetY:";
+            this.label24.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(12, 29);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(53, 12);
+            this.label25.TabIndex = 0;
+            this.label25.Text = "OffsetX:";
+            this.label25.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(933, 659);
+            this.ClientSize = new System.Drawing.Size(933, 766);
             this.Controls.Add(this.groupBoxLog);
             this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBoxConnect);
@@ -911,6 +1147,8 @@
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             this.groupBoxLog.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -995,5 +1233,26 @@
         private System.Windows.Forms.Label labX;
         private System.Windows.Forms.RichTextBox richTextBoxLog;
         private System.Windows.Forms.GroupBox groupBoxLog;
+        private System.Windows.Forms.Button btnEnableAgain;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button btnRelJointMovJ;
+        private System.Windows.Forms.Button btnRelMovLUser;
+        private System.Windows.Forms.Button btnRelMovJUser;
+        private System.Windows.Forms.TextBox textBoxOffset4;
+        private System.Windows.Forms.TextBox textBoxOffsetRx;
+        private System.Windows.Forms.TextBox textBoxOffset3;
+        private System.Windows.Forms.TextBox textBoxOffsetZ;
+        private System.Windows.Forms.TextBox textBoxOffset2;
+        private System.Windows.Forms.TextBox textBoxOffsetY;
+        private System.Windows.Forms.TextBox textBoxOffset1;
+        private System.Windows.Forms.TextBox textBoxOffsetX;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label25;
     }
 }
